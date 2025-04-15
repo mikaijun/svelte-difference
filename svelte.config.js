@@ -4,8 +4,8 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	compilerOptions: {
-		runes: false,
-	 },
+		runes: false
+	},
 	preprocess: vitePreprocess(),
 
 	kit: {
@@ -16,7 +16,6 @@ const config = {
 		// See https://github.com/storybookjs/addon-svelte-csf/issues/290#issuecomment-2801321530
 		dynamicCompileOptions({ filename }) {
 			if (filename.includes('node_modules/@storybook/addon-svelte-csf')) {
-				 
 				return { runes: undefined };
 			}
 			return { runes: false };
