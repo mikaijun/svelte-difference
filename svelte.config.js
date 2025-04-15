@@ -3,15 +3,24 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://svelte.dev/docs/kit/integrations
-	// for more information about preprocessors
+	compilerOptions: {
+		runes: false,
+	 },
 	preprocess: vitePreprocess(),
 
 	kit: {
-		// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
-		// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
-		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 		adapter: adapter()
+	},
+	vitePlugin: {
+		// CompilerOptions.runes を設定すると、@storybook/addon-svelte-csf のライブラリとの互換性の問題により、 Storybook が起動しなくなるため、dynamicCompileOptions を使って該当ファイルに対して設定を上書きしています。
+		// See https://github.com/storybookjs/addon-svelte-csf/issues/290#issuecomment-2801321530
+		dynamicCompileOptions({ filename }) {
+			if (filename.includes('node_modules/@storybook/addon-svelte-csf')) {
+				 
+				return { runes: undefined };
+			}
+			return { runes: false };
+		}
 	}
 };
 

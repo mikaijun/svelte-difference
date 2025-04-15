@@ -7,9 +7,14 @@ const config: StorybookConfig = {
   ],
   "addons": [
     "@storybook/addon-essentials",
-    "@storybook/addon-svelte-csf",
     "@chromatic-com/storybook",
-    "@storybook/experimental-addon-test"
+    "@storybook/experimental-addon-test",
+    {
+			name: '@storybook/addon-svelte-csf',
+			options: {
+				legacyTemplate: true
+			}
+		}
   ],
   "framework": {
     "name": "@storybook/sveltekit",
