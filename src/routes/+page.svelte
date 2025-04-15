@@ -1,4 +1,7 @@
-<svelte:options runes={true} />
+<script>
+    import LegacyButton from "../stories/legacy/LegacyButton.svelte";
+    import NewButton from "../stories/new/NewButton.svelte";
+</script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+
+
